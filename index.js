@@ -17,6 +17,17 @@ export class HomeIndicator extends Component {
         return HomeIndicator.propsHistory[HomeIndicator.propsHistory.length - 1] || {};
     }
 
+    static replaceLastAndGetNewValue() {
+        const lastIndex = HomeIndicator.propsHistory.length - 1;
+        if (lastIndex >= 0) {
+            const newValue = !HomeIndicator.propsHistory[lastIndex];
+            HomeIndicator.propsHistory[lastIndex] = newValue;
+            return newValue;
+        }
+
+        return {};
+    }
+
     componentDidMount() {
         if (!isIos) return;
 
@@ -31,6 +42,15 @@ export class HomeIndicator extends Component {
 
         const { autoHidden } = HomeIndicator.popAndGetPreviousProps();
         updateNativeHomeIndicator({ autoHidden });
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!isIos) return;
+
+        if (prevProps.autoHidden !== this.props.autoHidden) {
+            const { autoHidden } = HomeIndicator.replaceLastAndGetNewValue();
+            updateNativeHomeIndicator({ autoHidden });
+        }
     }
 
     render() {

@@ -9,7 +9,7 @@ node_modules/
 npm-debug.log
 yarn-error.log
 coverage
-  
+
 
 # Xcode
 #
@@ -30,9 +30,17 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-    
+
 
 # BUCK
 buck-out/
 \.buckd/
 *.keystore
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/codeStyles/Project.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/react-native-home-indicator.iml
+/.idea/vcs.xml
+/.idea/workspace.xml
