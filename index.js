@@ -19,10 +19,11 @@ export class HomeIndicator extends Component {
 
     static replaceLastAndGetNewValue() {
         const lastIndex = HomeIndicator.propsHistory.length - 1;
+
         if (lastIndex >= 0) {
-            const newValue = !HomeIndicator.propsHistory[lastIndex];
-            HomeIndicator.propsHistory[lastIndex] = newValue;
-            return newValue;
+            const { autoHidden } = HomeIndicator.propsHistory[lastIndex];
+            HomeIndicator.propsHistory[lastIndex] = { autoHidden: !autoHidden};
+            return { autoHidden: !autoHidden };
         }
 
         return {};
